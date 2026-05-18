@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "Voyage — AI Travel"
+version = "1.0.0"
+id = "artifacts/voyage"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 23611
+
+[services.development]
+run = "pnpm --filter @workspace/voyage run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/voyage", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/voyage", "run", "serve" ]
+
+[services.env]
+PORT = "23611"
+BASE_PATH = "/"
